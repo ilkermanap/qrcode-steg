@@ -7,8 +7,10 @@ class Birlestir:
         self.resim = Image.open(resim)
         self.veri = veri
         self.qr = KareKodlar(veri, parcaBoyu, 10)
-        self.qr.resimYap(self.resim.size)
+        x,y = self.resim.size
+        self.qr.resimYap(x,y)
 
+        
     def birlestir(self):
         x, y = self.resim.size
         for j in range(y):

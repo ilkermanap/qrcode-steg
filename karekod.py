@@ -32,13 +32,14 @@ class KareKodlar:
         else:
             self.parca = (len(veri) / parcaBoyu) + 1
 
+        self.parca = int(self.parca)
         for i in range(self.parca):
             self.kodlar[i] = KareKod(veri[(i * parcaBoyu):(i + 1) * parcaBoyu])
             xx,yy = self.kodlar[i].img.size
-            self.kodlar[i].buyut(xx / zoom, yy/zoom)
+            self.kodlar[i].buyut(int(xx / zoom), int(yy/zoom))
             #self.kodlar[i].kaydet("%d.png" % i)
 
-    def resimYap(self, (x,y)):
+    def resimYap(self, x,y):
         """
         x,y buyuklugunde bir resim icine karekodlari yerlestirir.
 
@@ -65,5 +66,5 @@ class KareKodlar:
 if __name__ == "__main__":
     veri = open("/bin/bash","rb").read(4512)
     k = KareKodlar(veri,128,4)
-    k.resimYap((1000,1000))
+    k.resimYap(1000,1000)
     k.resim.save("buyukresim.png")
